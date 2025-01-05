@@ -1,9 +1,6 @@
 package com.slippery.fakestore.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +18,13 @@ public class User {
     @Id
     private Long id;
     private LocalDateTime createdOn;
+    private String firstname;
+    private String lastname;
+    private String username;
+    private String email;
+    private String password;
+    private String phone;
+    @OneToOne
+    private Address userAddress;
 
 }
