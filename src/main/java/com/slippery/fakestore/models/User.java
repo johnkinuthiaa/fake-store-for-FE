@@ -27,6 +27,8 @@ public class User {
     private String password;
     private String phone;
     @OneToOne(cascade = CascadeType.ALL)
+    private Cart cart;
+    @OneToOne(cascade = CascadeType.ALL)
     private Address userAddress;
 
 }

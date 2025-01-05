@@ -4,5 +4,5 @@ import com.slippery.fakestore.dto.CartDto;
 import com.slippery.fakestore.models.Cart;
 
 public interface CartService {
-    CartDto createNewCart(Cart cartDetails);
+    CartDto addItem(Long userId,Long cartId,Long productId);
 }

@@ -42,17 +42,23 @@ public class UserServiceImpl implements UserService {
         toSave.setCreatedOn(LocalDateTime.now());
         toSave.setUserAddress(userDetails.getAddress());
         toSave.setPassword(passwordEncoder.encode(toSave.getPassword()));
-//        save the address
-        Address userAddress =userDetails.getAddress();
-        userAddress.setUser(toSave);
-        addressRepository.save(userAddress);
-        userRepository.save(toSave);
-//        create cart
+
+        //        create cart
         Cart cart = new Cart();
         cart.setCreatedOn(LocalDateTime.now());
         cart.setProducts(null);
         cart.setUser(toSave);
         cartRepository.save(cart);
+
+        toSave.setCart(cart);
+
+//        save the address
+        Address userAddress =userDetails.getAddress();
+
+        userAddress.setUser(toSave);
+        addressRepository.save(userAddress);
+        userRepository.save(toSave);
+
 
         response.setMessage("new user created");
         response.setStatusCode(200);
