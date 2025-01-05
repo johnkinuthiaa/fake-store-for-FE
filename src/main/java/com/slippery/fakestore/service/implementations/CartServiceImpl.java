@@ -52,8 +52,13 @@ public class CartServiceImpl implements CartService {
             return response;
         }
         List<Product> products =cart.get().getProducts();
-        products.add(product.get());
+        if(products.contains(product.get())){
+            response.setMessage("Item is already in cart");
+            response.setStatusCode(303);
+            return response;
+        }
 
+        products.add(product.get());
         cart.get().setProducts(products);
         cart.get().setTotalItems(products.size());
         cartRepository.save(cart.get());

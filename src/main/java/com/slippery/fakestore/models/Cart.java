@@ -22,7 +22,7 @@ public class Cart {
     @OneToOne(cascade = CascadeType.ALL)
     @JsonBackReference
     private User user;
-    @OneToMany
+    @ManyToMany
     private List<Product> products;
     private int totalItems;
     private LocalDateTime createdOn;
