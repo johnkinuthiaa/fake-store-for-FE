@@ -1,33 +1,25 @@
 package com.slippery.fakestore.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class Product {
-    @Id
+public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
-    private String title;
-    @Lob
-    private String description;
-    private String category;
-    private String image;
-    private float rate;
-    private int ratingCount;
     private LocalDateTime createdOn;
-    private int quantityRemaining;
-    @ManyToOne
-    private Cart productCart;
 
 }

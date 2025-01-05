@@ -10,24 +10,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class Product {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    @Lob
-    private String description;
-    private String category;
-    private String image;
-    private float rate;
-    private int ratingCount;
+    @OneToOne
+    private User user;
+    @OneToMany
+    private List<Product> products;
+    private int totalItems;
     private LocalDateTime createdOn;
-    private int quantityRemaining;
-    @ManyToOne
-    private Cart productCart;
-
 }
