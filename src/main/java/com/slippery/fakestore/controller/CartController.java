@@ -25,4 +25,17 @@ public class CartController {
 
 
     }
+    @PutMapping("/remove-item")
+    public ResponseEntity<CartDto> removeItemFromCart(
+            @RequestParam Long userId,
+            @RequestParam Long cartId,
+            @RequestParam Long productId){
+        return ResponseEntity.ok(cartService.removeItemFromCart(userId, cartId, productId));
+
+    }
+    @PutMapping("/clear")
+    public ResponseEntity<CartDto> clearCart(@RequestParam Long userId, @RequestParam Long cartId){
+        return ResponseEntity.ok(cartService.clearCart(userId, cartId));
+
+    }
 }
