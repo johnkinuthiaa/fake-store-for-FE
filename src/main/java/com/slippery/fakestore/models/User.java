@@ -1,5 +1,7 @@
 package com.slippery.fakestore.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,7 +26,7 @@ public class User {
     private String email;
     private String password;
     private String phone;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address userAddress;
 
 }

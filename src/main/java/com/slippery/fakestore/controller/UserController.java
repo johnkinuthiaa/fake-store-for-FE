@@ -3,10 +3,7 @@ package com.slippery.fakestore.controller;
 import com.slippery.fakestore.dto.UserDto;
 import com.slippery.fakestore.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -19,5 +16,9 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDetails){
         return ResponseEntity.ok(userService.createUser(userDetails));
+    }
+    @DeleteMapping("/delete/id")
+    public ResponseEntity<UserDto> deleteUser(@RequestParam Long userId){
+        return ResponseEntity.ok(userService.deleteUser(userId));
     }
 }

@@ -5,4 +5,5 @@ import com.slippery.fakestore.models.User;
 
 public interface UserService {
     UserDto createUser(UserDto user);
+    UserDto deleteUser(Long userId);
 }

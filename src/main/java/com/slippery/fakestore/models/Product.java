@@ -1,5 +1,7 @@
 package com.slippery.fakestore.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +30,7 @@ public class Product {
     private LocalDateTime createdOn;
     private int quantityRemaining;
     @ManyToOne
+    @JsonBackReference
     private Cart productCart;
 
 }
