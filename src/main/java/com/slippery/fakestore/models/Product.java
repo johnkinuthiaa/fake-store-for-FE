@@ -29,8 +29,5 @@ public class Product {
     private int ratingCount;
     private LocalDateTime createdOn;
     private int quantityRemaining;
-    @ManyToOne
-    @JsonBackReference
-    private Cart productCart;
 
 }

@@ -2,7 +2,6 @@ package com.slippery.fakestore.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonIncludeProperties;
 import com.slippery.fakestore.models.Product;
 import lombok.Data;
 
