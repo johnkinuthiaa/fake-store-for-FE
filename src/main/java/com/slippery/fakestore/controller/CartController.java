@@ -4,10 +4,7 @@ import com.slippery.fakestore.dto.CartDto;
 import com.slippery.fakestore.repository.CartRepository;
 import com.slippery.fakestore.service.CartService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/cart")
@@ -37,5 +34,13 @@ public class CartController {
     public ResponseEntity<CartDto> clearCart(@RequestParam Long userId, @RequestParam Long cartId){
         return ResponseEntity.ok(cartService.clearCart(userId, cartId));
 
+    }
+    @GetMapping("/get/cart/id")
+    public ResponseEntity<CartDto> findCartById(@RequestParam Long userId,@RequestParam Long cartId){
+        return ResponseEntity.ok(cartService.findCartById(userId, cartId));
+    }
+    @GetMapping("/get/all/carts")
+    public ResponseEntity<CartDto> getAllCarts(){
+        return ResponseEntity.ok(cartService.getAllCarts());
     }
 }

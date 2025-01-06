@@ -146,4 +146,44 @@ public class CartServiceImpl implements CartService {
         response.setStatusCode(200);
         return response;
     }
+
+    @Override
+    public CartDto findCartById(Long userId, Long cartId) {
+        Optional<User> user =userRepository.findById(userId);
+        Optional<Cart> cart =cartRepository.findById(userId);
+        CartDto response =new CartDto();
+        if(cart.isEmpty()){
+            response.setMessage("cart does not exist");
+            response.setStatusCode(404);
+            return response;
+        }
+        if(user.isEmpty()){
+            response.setMessage("User does not exist");
+            response.setStatusCode(404);
+            return response;
+        }
+        if(!cart.get().getUser().equals(user.get())){
+            response.setMessage("cart does not belong to the given user");
+            response.setStatusCode(401);
+            return response;
+        }
+        response.setMessage("cart with id "+cartId);
+        response.setCart(cart.get());
+        return response;
+    }
+
+    @Override
+    public CartDto getAllCarts() {
+        CartDto response =new CartDto();
+        List<Cart> carts =cartRepository.findAll();
+        if(carts.isEmpty()){
+            response.setMessage("No active carts");
+            response.setStatusCode(404);
+            return response;
+        }
+        response.setCartList(carts);
+        response.setMessage("All carts");
+        response.setStatusCode(200);
+        return response;
+    }
 }
