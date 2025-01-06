@@ -30,7 +30,7 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests->requests
-                        .requestMatchers("/api/v1/user/login","/api/v1/user/register")
+                        .requestMatchers("https://fake-store-for-fe.onrender.com/api/v1/user/login","https://fake-store-for-fe.onrender.com/api/v1/user/register")
                         .permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
