@@ -74,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
         response.setProducts(products);
         response.setMessage("All products");
         response.setStatusCode(200);
-        return null;
+        return response;
     }
 
     @Override
