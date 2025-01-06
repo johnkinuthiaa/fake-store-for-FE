@@ -17,5 +17,6 @@ public class UserDto {
     private User user;
     private Address address;
     private List<User> users;
+    private String JwtToken;
 
 }
