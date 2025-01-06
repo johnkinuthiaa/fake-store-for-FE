@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(requests->requests
                         .requestMatchers("https://fake-store-for-fe.onrender.com/api/v1/user/login","https://fake-store-for-fe.onrender.com/api/v1/user/register")
                         .permitAll()
-                        .anyRequest().permitAll())
+                        .anyRequest().authenticated())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(Customizer.withDefaults())
                 .build();
