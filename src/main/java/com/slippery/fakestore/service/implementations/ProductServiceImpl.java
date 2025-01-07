@@ -24,6 +24,9 @@ public class ProductServiceImpl implements ProductService {
         ProductDto response =new ProductDto();
         product.setCreatedOn(LocalDateTime.now());
         repository.save(product);
+        response.setProduct(product);
+        response.setMessage("New product created successfully");
+        response.setStatusCode(200);
         return response;
     }
 

@@ -1,131 +1,125 @@
-The online store API allows frontend developers to interact with the backend services for managing products, categories, and shopping carts. This API follows RESTful principles and is built using Spring Boot.
+# Fake store API
+An online store API allows frontend developers to interact with the backend services for managing products, categories, and shopping carts. This API follows RESTful principles and is built using Spring Boot.
 
 Base URL
-
-The base URL for the API is: http://localhost:8080/api/v1
+The base URL for the API is: https://fake-store-for-fe.onrender.com
 Authentication
-
-The API uses token-based authentication. Developers must include a valid token in the Authorization header for all requests.
+The API uses token-based authentication.
+Developers must include a valid token in the Authorization header for all requests except for login and registration requests
+Authentication
+{
+"username": "johndoe",
+"email": "john.doe@example.com",
+"password": "securePassword123"
+}
+{
+"statusCode": 200,
+"message": "User logged in successfully",
+"jwtToken": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb2huZG9lIiwiaWF0IjoxNzM2MjM4NjA4LCJleHAiOjE3MzYyNDcyNDh9.xqcJ6GGMVinng3L1yhAml5e99I9fnDZ6tCE2hueei_970hS7WmQUzNFNuvOVvyZjcRvzekAwYrgMP77N_xTvHg"
+}
 Endpoints
 
 Products
 
 Get All Products
 
-Endpoint: GET /products
-Description: Retrieves a list of all products.
-Response:
-json
-
-Verify
-
-Open In Editor
-Run
-Copy code
+* Endpoint: GET /api/v1/products/all/products 
+* Description: Retrieves a list of all products.
+* Response:
+```json
 [
-{
-"id": 1,
-"name": "Product A",
-"price": 29.99,
-"quantity": 100
-},
+  {
+  "title": "Wireless Headphones",
+  "description": "High-quality wireless headphones with noise cancellation.",
+  "category": "Electronics",
+  "image": "https://i.pinimg.com/236x/d4/13/f3/d413f351550c68c4297b3e39032eac83.jpg",
+  "rate": 89.99,
+  "ratingCount": 150,
+  "createdOn": "2023-10-01T12:30:00",
+  "quantityRemaining": 25
+  }
+]
+```
+[
+
 ...
 ]
 Get Product by ID
 
-Endpoint: GET /products/{id}
+Endpoint: GET /api/v1/products/get/products/id
 Description: Retrieves a single product by its ID.
 Response:
-json
-
-Verify
-
-Open In Editor
-Run
-Copy code
+```json
 {
-"id": 1,
-"name": "Product A",
-"price": 29.99,
-"quantity": 100
+"title": "Wireless Headphones",
+"description": "High-quality wireless headphones with noise cancellation.",
+"category": "Electronics",
+"image": "https://i.pinimg.com/236x/d4/13/f3/d413f351550c68c4297b3e39032eac83.jpg",
+"rate": 89.99,
+"ratingCount": 150,
+"createdOn": "2023-10-01T12:30:00",
+"quantityRemaining": 25
 }
+```
+
 Create Product
 
-Endpoint: POST /products
+Endpoint: POST /api/v1/products/create/new
 Description: Creates a new product.
 Request Body:
-json
-
-Verify
-
-Open In Editor
-Run
-Copy code
+```json
 {
-"name": "Product A",
-"price": 29.99,
-"quantity": 100
+"title": "Wireless Headphones",
+"description": "High-quality wireless headphones with noise cancellation.",
+"category": "Electronics",
+"image": "https://i.pinimg.com/236x/d4/13/f3/d413f351550c68c4297b3e39032eac83.jpg",
+"rate": 89.99,
+"ratingCount": 150,
+"createdOn": "2023-10-01T12:30:00",
+"quantityRemaining": 25
 }
+```
 Response:
-json
-
-Verify
-
-Open In Editor
-Run
-Copy code
+```json
 {
-"id": 1,
-"name": "Product A",
-"price": 29.99,
-"quantity": 100
+  "message": "new product created successfully",
+  "statusCode": 200,
+  "product": [
+    {
+      "title": "Wireless Headphones",
+      "description": "High-quality wireless headphones with noise cancellation.",
+      "category": "Electronics",
+      "image": "https://i.pinimg.com/236x/d4/13/f3/d413f351550c68c4297b3e39032eac83.jpg",
+      "rate": 89.99,
+      "ratingCount": 150,
+      "createdOn": "2023-10-01T12:30:00",
+      "quantityRemaining": 25
+    }
+  ]
 }
+```
+
 Update Product
 
-Endpoint: PUT /products/{id}
+Endpoint: PUT 
 Description: Updates an existing product.
 Request Body:
-json
 
-Verify
-
-Open In Editor
-Run
-Copy code
-{
-"name": "Updated Product A",
-"price": 19.99,
-"quantity": 50
-}
 Response:
-json
 
-Verify
-
-Open In Editor
-Run
-Copy code
-{
-"id": 1,
-"name": "Updated Product A",
-"price": 19.99,
-"quantity": 50
-}
 Delete Product
 
-Endpoint: DELETE /products/{id}
+Endpoint: DELETE /api/v1/products/delete/products
+Request param : id
 Description: Deletes a product by its ID.
 Response:
-json
-
-Verify
-
-Open In Editor
-Run
-Copy code
+```json
 {
-"message": "Product with ID 1 has been deleted successfully"
+  "message": "Product with ID 1 has been deleted successfully",
+  "statusCode": 200
 }
+```
+
 Categories
 
 Get All Categories
@@ -156,7 +150,4 @@ The API returns standard HTTP status codes to indicate the success or failure of
 500 Internal Server Error: Unexpected server error.
 Testing the API
 
-Use tools like Postman or curl to test the API endpoints. Ensure to include the Authorization header with a valid token for protected routes.
-Conclusion
-
-This documentation provides a comprehensive overview of the online store API built with Spring Boot. Frontend developers can use this guide to understand how to interact with the API effectively.
+ Ensure to include the Authorization header with a valid token for protected routes.
