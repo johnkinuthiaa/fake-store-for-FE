@@ -12,6 +12,7 @@ Authentication
 "email": "john.doe@example.com",
 "password": "securePassword123"
 }
+
 {
 "statusCode": 200,
 "message": "User logged in successfully",
